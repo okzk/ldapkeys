@@ -1,0 +1,4 @@
+package: github.com/okzk/ldapkeys
+import:
+- package: github.com/BurntSushi/toml
+- package: gopkg.in/ldap.v2
