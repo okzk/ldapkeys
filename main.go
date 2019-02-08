@@ -57,7 +57,7 @@ func printPublicKeys(conf *Config, uid string) {
 
 	searchRequest := ldap.NewSearchRequest(
 		conf.BaseDN, ldap.ScopeWholeSubtree, ldap.DerefAlways, 0, 0, false,
-		fmt.Sprintf("(&(uid=%s)%s)", uid, conf.Filter),
+		fmt.Sprintf("(&(uid=%s)%s)", ldap.EscapeFilter(uid), conf.Filter),
 		[]string{"sshPublicKey"}, nil)
 
 	sr, err := l.Search(searchRequest)
