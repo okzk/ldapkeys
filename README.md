@@ -1,12 +1,10 @@
 # ldapkeys
 
-Helper command for `AuthorizedKeysCommand` in sshd
+Helper command for `AuthorizedKeysCommand` in sshd.
 
 ## Install
 
-```bash
-go get github.com/okzk/ldapkeys
-```
+Download from [releases](https://github.com/okzk/ldapkeys/releases).
 
 ## Configurations
 
