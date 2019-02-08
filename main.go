@@ -77,24 +77,24 @@ func printPublicKeys(conf *Config, uid string) {
 }
 
 func connectLDAP(urlStr string) (*ldap.Conn, error) {
-	ldapUrl, err := url.Parse(urlStr)
+	ldapURL, err := url.Parse(urlStr)
 	if err != nil {
 		return nil, err
 	}
 
-	if ldapUrl.Scheme == "ldap" {
-		address := ldapUrl.Host
-		if ldapUrl.Port() == "" {
+	if ldapURL.Scheme == "ldap" {
+		address := ldapURL.Host
+		if ldapURL.Port() == "" {
 			address += ":389"
 		}
 		return ldap.Dial("tcp", address)
-	} else if ldapUrl.Scheme == "ldaps" {
-		address := ldapUrl.Host
-		if ldapUrl.Port() == "" {
-			address = ldapUrl.Host + ":636"
+	} else if ldapURL.Scheme == "ldaps" {
+		address := ldapURL.Host
+		if ldapURL.Port() == "" {
+			address = ldapURL.Host + ":636"
 		}
-		return ldap.DialTLS("tcp", address, &tls.Config{ServerName: ldapUrl.Host})
+		return ldap.DialTLS("tcp", address, &tls.Config{ServerName: ldapURL.Host})
 	} else {
-		return nil, errors.New("unsupported scheme: " + ldapUrl.Scheme)
+		return nil, errors.New("unsupported scheme: " + ldapURL.Scheme)
 	}
 }
