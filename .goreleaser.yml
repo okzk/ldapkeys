@@ -1,0 +1,16 @@
+builds:
+  - env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+archive:
+  format: tar.gz
+  files:
+    - README.md
+    - LICENSE
+release:
+  github:
+    owner: okzk
+    name: ldapkeys
